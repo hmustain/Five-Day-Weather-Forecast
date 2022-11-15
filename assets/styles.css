@@ -1,5 +1,81 @@
+:root {
+    --primary: darkblue;
+    --secondary: lightblue;
+    --dark: #0b0b45;
+    --light-dark: skyblue;
+    --border-radius: .3rem;
+}
+
+
+
 #header {
     background-image: linear-gradient(to left, darkblue, lightblue);
     text-align: center;
     color: white;
+    border-bottom: 3px solid var(--dark);
 }
+
+.card {
+    margin: 0 0 20px 0;
+    border: 3px solid var(--dark);
+    border-radius: var(--border-radius);
+}
+
+.card-header {
+    color: var(--secondary);
+    background-color: var(--dark);
+    padding: 2.5%;
+    border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
+}
+
+.card-body {
+    padding: 2.5%;
+  }
+
+  .form-label,
+.form-input,
+.form-textarea {
+  display: block;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  margin: 0 0 0 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 3%;
+    margin: 5px 0;
+    font-size: 1.2rem;
+    border: 2px solid var(--dark);
+    border-radius: var(--border-radius);
+  }
+
+  .btn {
+    font-size: 1.3rem;
+    text-decoration:none;
+    padding: 6px 5px;
+    width: 100%;
+    display: block;
+    margin: 5px 0;
+    border-radius: var(--border-radius);
+    color: var(--secondary);
+    border: none;
+    outline: none;
+    background-color: var(--dark);
+    box-shadow: 3px 3px var(--secondary);
+    transform: translate(-1px, -1px);
+  }
+
+  .btn:hover {
+    color: var(--primary);
+    background-color: var(--secondary);
+    transform: translate(0, 0);
+    box-shadow: 2px 2px var(--dark);
+  }
+
+  .btn-inline {
+    display: inline;
+  }
+  
