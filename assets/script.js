@@ -26,8 +26,13 @@ $("#citysearchbtn").on("click", function(event){
     var cityList = document.createElement("li").innerHTML=prevCity;
 
     citySearch.append(cityList);
+
+console.log("the previous city entered is " + prevCity);
+console.log("the current city entered is " + cityEntered);
 }});
 
 
 console.log("my api key is " + apiKey);
+
+
 
