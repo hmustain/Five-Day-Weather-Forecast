@@ -24,8 +24,8 @@ function getApi(cityEntered) {
 
         console.log("the lat, lon for " + cityEntered + " is " + [lat,lon]);
 
-    var weatherUrl = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
+    var weatherUrl = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    
     console.log(weatherUrl);
 
     fetch(weatherUrl)
