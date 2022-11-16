@@ -18,25 +18,8 @@ function getApi(cityEntered) {
 
 
             console.log("my api key is " + apiKey);
-        // put new fetch for lat long url here
-        var lat =  data[0].lat;
-        var lon =  data[0].lon;
 
-        console.log("the lat, lon for " + cityEntered + " is " + [lat,lon]);
-
-    var weatherUrl = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-    
-    console.log(weatherUrl);
-
-    fetch(weatherUrl)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
-            })
-
-
+            currentWeather();
         })
 };
 
@@ -76,5 +59,26 @@ $("#citysearchbtn").on("click", function (event) {
         getApi(cityEntered);
     }
 });
+
+
+    function currentWeather() {
+        // put new fetch for lat long url here
+        var lat =  data[0].lat;
+        var lon =  data[0].lon;
+
+        console.log("the lat, lon for " + cityEntered + " is " + [lat,lon]);
+
+    var weatherUrl = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    console.log(weatherUrl);
+
+    fetch(weatherUrl)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data[0]);
+            })};
+
 
 
