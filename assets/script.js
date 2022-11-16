@@ -22,7 +22,7 @@ function getApi(cityEntered) {
         var lat =  data[0].lat;
         var lon =  data[0].lon;
 
-        console.log(lat,lon);
+        console.log("the lat, lon for " + cityEntered + " is " + [lat,lon]);
 
     var weatherUrl = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
