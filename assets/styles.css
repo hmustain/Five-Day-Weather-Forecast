@@ -79,30 +79,30 @@
     display: inline;
   }
 
-  
-#citysearch {
-    font-size: 1.3rem;
-    text-decoration:none;
-    padding: 6px 5px;
-    width: 100%;
-    display: block;
-    /* margin: 5px 0; */
-    margin-top: 3%;
-    border-radius: var(--border-radius);
-    color: var(--dark);
-    border: none;
-    outline: none;
-    background-color: var(--secondary);
-    box-shadow: 3px 3px var(--dark);
-    transform: translate(-1px, -1px);  
-    text-align: center;
-}
 
 .list-group {
     padding: 0;
     list-style: none;
   }
 
-.hide {
-    display: none;
+.prev-city-item {
+  font-size: 1.3rem;
+  text-decoration:none;
+  padding: 6px 5px;
+  width: 100%;
+  display: block;
+  /* margin: 5px 0; */
+  margin-top: 3%;
+  border-radius: var(--border-radius);
+  color: var(--dark);
+  border: none;
+  outline: none;
+  background-color: var(--secondary);
+  box-shadow: 3px 3px var(--dark);
+  transform: translate(-1px, -1px);  
+  text-align: center;
 }
+
+/* .hide {
+    display: none;
+} */

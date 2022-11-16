@@ -23,7 +23,9 @@ $("#citysearchbtn").on("click", function(event){
 
     function searchCity(){
     var prevCity = JSON.parse(localStorage.getItem("city name"));
-    var cityList = document.createElement("li").innerHTML=prevCity;
+    var cityList = document.createElement("li");
+    cityList.setAttribute('class', 'prev-city-item');
+    cityList.textContent=prevCity;
 
     citySearch.append(cityList);
 
