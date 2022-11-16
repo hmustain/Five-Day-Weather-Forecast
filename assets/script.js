@@ -9,6 +9,7 @@ function getApi(cityEntered) {
     // below is combination from going back to ins_demo act 3 and ask bcs told me to use string template literals
     var url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&appid=${apiKey}`;
     console.log(url);
+    
     fetch(url)
         .then(function (response) {
             return response.json();
@@ -16,17 +17,16 @@ function getApi(cityEntered) {
         .then(function (data) {
             console.log(data[0]);
 
-
             console.log("my api key is " + apiKey);
 
             currentWeather();
-        })
-};
+        });
+}
 
-
-var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=city name&appid=' + apiKey;
+var requestUrl =
+    "http://api.openweathermap.org/geo/1.0/direct?q=city name&appid=" + apiKey;
 var testCity = "San Antonio";
-var testUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${testCity}&appid=${apiKey}`
+var testUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${testCity}&appid=${apiKey}`;
 
 console.log(testUrl);
 
@@ -36,10 +36,10 @@ $("#citysearchbtn").on("click", function (event) {
     var cityEntered = $("#cityname").val().trim();
 
     if (cityEntered) {
-        console.log("the city you entered is " + cityEntered)
-
+        console.log("the city you entered is " + cityEntered);
+    } else {
+        alert("Please enter a valid City");
     }
-    else { alert("Please enter a valid City") };
 
     localStorage.setItem("city name", JSON.stringify(cityEntered));
     console.log("the city you entered is " + cityEntered);
@@ -48,7 +48,7 @@ $("#citysearchbtn").on("click", function (event) {
     function searchCity() {
         var prevCity = JSON.parse(localStorage.getItem("city name"));
         var cityList = document.createElement("li");
-        cityList.setAttribute('class', 'prev-city-item');
+        cityList.setAttribute("class", "prev-city-item");
         cityList.textContent = prevCity;
 
         citySearch.append(cityList);
@@ -60,25 +60,27 @@ $("#citysearchbtn").on("click", function (event) {
     }
 });
 
+function currentWeather(cityEntered) {
+    // put new fetch for lat long url here
+    // var lat = data[0].lat;
+    // var lon = data[0].lon;
 
-    function currentWeather() {
-        // put new fetch for lat long url here
-        var lat =  data[0].lat;
-        var lon =  data[0].lon;
+    // console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
 
-        console.log("the lat, lon for " + cityEntered + " is " + [lat,lon]);
 
-    var weatherUrl = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
-    console.log(weatherUrl);
 
     fetch(weatherUrl)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data[0]);
-            })};
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data[0]);
 
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+            var weatherUrl = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
-
+            console.log(weatherUrl);
+            console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
+        });
+}
