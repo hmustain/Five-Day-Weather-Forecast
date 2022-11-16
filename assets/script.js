@@ -7,9 +7,9 @@ var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
 function getApi(cityEntered) {
     // fetch request gets a list of all the repos for the node.js organization
     // below is combination from going back to ins_demo act 3 and ask bcs told me to use string template literals
-    var url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&appid=${apiKey}`;
+    var url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&appid=${apiKey}`;
     console.log(url);
-    
+
     fetch(url)
         .then(function (response) {
             return response.json();
@@ -19,10 +19,25 @@ function getApi(cityEntered) {
 
             console.log("my api key is " + apiKey);
 
-            currentWeather();
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+
+            var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+            fetch(weatherUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+
+                    console.log(weatherUrl);
+                    console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
+                });
+
+            // currentWeather();
         });
 }
-
 
 $("#citysearchbtn").on("click", function (event) {
     event.preventDefault();
@@ -61,8 +76,6 @@ function currentWeather(cityEntered) {
 
     // console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
 
-
-
     fetch(weatherUrl)
         .then(function (response) {
             return response.json();
@@ -72,7 +85,7 @@ function currentWeather(cityEntered) {
 
             var lat = data[0].lat;
             var lon = data[0].lon;
-            var weatherUrl = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+            var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
             console.log(weatherUrl);
             console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
