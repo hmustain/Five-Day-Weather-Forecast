@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <title>Five Day Weather Forecast</title>
-  </head>
+</head>
 
-  <body class="flex-column min-100-vh">
+<body class="flex-column min-100-vh">
     <header id="header" class="jumbotron">
         <h1 class="display-3">Weather Dashboard</h1>
-      </header>
-      <main class="flex-row justify-space-between">
+    </header>
+    <main class="flex-row justify-space-between">
         <div class="col-12 col-md-4">
             <div class="card">
                 <h3 class="card-header">Search for a City</h3>
                 <form id="city-form" class="card-body">
-                    <label class="form-label" for="cityname">City Name</label>
-                    <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
-                    <button type="submit" class="btn">Search</button>
-                  </form>
-                </div>
-      </main>
+                    <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input"
+                        placeholder="Enter city to view weather" />
+                    <button type="submit" id="citysearchbtn" class="btn">Search</button>
+                    <div class="col-12 col-md-4">
+                    </div>
+                    <div id="previous-cities" class="hide">
+                        <ul id="citysearch" class="list-group"></ul>
+                        <!-- need help dynamically creating <li> here -->
+                    </div>
+                </form>
+            </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="./assets/script.js"></script>
-  </body>
+</body>
+
 </html>
