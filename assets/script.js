@@ -4,6 +4,17 @@ var searchCityContainerEl = document.querySelector("#searchcity");
 var citySearch = document.querySelector("#citysearch");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
 
+function getApi() {
+    // fetch request gets a list of all the repos for the node.js organization
+    var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=city name' + apiKey;
+  
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data)
+
 
 // working on event listener and local storage to store city's searched
 $("#citysearchbtn").on("click", function(event){
@@ -36,5 +47,5 @@ console.log("the current city entered is " + cityEntered);
 
 console.log("my api key is " + apiKey);
 
-
-
+getApi();
+      })};
