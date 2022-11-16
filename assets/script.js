@@ -23,12 +23,6 @@ function getApi(cityEntered) {
         });
 }
 
-var requestUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=city name&appid=" + apiKey;
-var testCity = "San Antonio";
-var testUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${testCity}&appid=${apiKey}`;
-
-console.log(testUrl);
 
 $("#citysearchbtn").on("click", function (event) {
     event.preventDefault();
