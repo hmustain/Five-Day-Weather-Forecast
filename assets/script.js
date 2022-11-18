@@ -3,6 +3,10 @@ var cityInputEl = document.querySelector("#cityname");
 var searchCityContainerEl = document.querySelector("#searchcity");
 var citySearch = document.querySelector("#citysearch");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
+var currentDay = dayjs().format('MM/DD/YYYY');
+$('#1a').text(currentDay);
+
+console.log("today is " + currentDay);
 
 function getApi(cityEntered) {
     // fetch request gets a list of all the repos for the node.js organization
@@ -86,25 +90,4 @@ $("#citysearchbtn").on("click", function (event) {
     }
 });
 
-function currentWeather(cityEntered) {
-    // put new fetch for lat long url here
-    // var lat = data[0].lat;
-    // var lon = data[0].lon;
 
-    // console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
-
-    fetch(weatherUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data[0]);
-
-            var lat = data[0].lat;
-            var lon = data[0].lon;
-            var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
-            console.log(weatherUrl);
-            console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
-        });
-}

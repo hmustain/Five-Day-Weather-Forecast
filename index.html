@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/styles.css" />
     <title>Five Day Weather Forecast</title>
 </head>
@@ -29,13 +31,14 @@
                     <div id="previous-cities" class="hide">
                         <ul id="citysearch" class="list-group"></ul>
                         <!-- need help dynamically creating <li> here -->
-                            <!-- this is working now  -->
+                        <!-- this is working now  -->
                     </div>
                 </form>
             </div>
-            
+
             <div class="card">
-                <h3 class="card-header">City: Current Weather </h3>
+                <h3 id="cityname" class="card-header">City: Current Weather </h3>
+                <p id="1a"></p>
             </div>
             <div class="card">
                 <h3 class="card-header">City: 5 Day Weather Forecast </h3>
