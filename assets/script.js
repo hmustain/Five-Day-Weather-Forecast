@@ -13,7 +13,7 @@ var day4 = document.querySelector("#day-4");
 var day5 = document.querySelector("#day-5");
 
 // weather icons
-var weatherIcon = document.queryCommandValue("#weather-icon");
+var weatherIcon = document.querySelector("#weather-icon");
 
 
 // set var for temps
@@ -83,7 +83,6 @@ function getApi(cityEntered) {
                 })
                 .then(function (data) {
                     console.log(data);
-
                     currentTemp.textContent = " Temp: " + data.main.temp + " °F";
                     currentWind.textContent = " Wind Speed: " + data.wind.speed + " mph ";
                     currentHum.textContent = " Humidity: " + data.main.humidity + "% ";
@@ -118,6 +117,8 @@ function getApi(cityEntered) {
                     console.log(iconUrl);
 
                     console.log(weatherUrl);
+                    weatherIcon.setAttribute("src", iconUrl);
+
 
                     console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
                 });
