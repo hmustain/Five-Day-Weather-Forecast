@@ -8,6 +8,7 @@ var currentWind = document.querySelector("#current-wind");
 var currentHum = document.querySelector("#current-hum");
 var weatherIcon = document.queryCommandValue("#weather-icon");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
+
 var currentDay = dayjs().format("MM/DD/YYYY");
 // $("#1a").text(currentDay);
 
