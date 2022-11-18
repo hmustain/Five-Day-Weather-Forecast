@@ -22,7 +22,7 @@ function getApi(cityEntered) {
             var lat = data[0].lat;
             var lon = data[0].lon;
 
-            var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+            var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
 
             fetch(weatherUrl)
                 .then(function (response) {
@@ -30,8 +30,10 @@ function getApi(cityEntered) {
                 })
                 .then(function (data) {
                     console.log(data);
+                    console.log(data.main.temp + " F");
 
                     console.log(weatherUrl);
+                    
                     console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
                 });
 
