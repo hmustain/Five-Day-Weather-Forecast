@@ -3,11 +3,10 @@ var cityInputEl = document.querySelector("#cityname");
 var searchCityContainerEl = document.querySelector("#searchcity");
 var citySearch = document.querySelector("#citysearch");
 var cityLocation = document.querySelector("#citylocation");
-var currentTemp = document.querySelector("#current-temp");
-var currentWind = document.querySelector("#current-wind");
-var currentHum = document.querySelector("#current-hum");
 var weatherIcon = document.queryCommandValue("#weather-icon");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
+
+// 5 day forcast header titles
 var day1 = document.querySelector("#day-1");
 var day2 = document.querySelector("#day-2");
 var day3 = document.querySelector("#day-3");
@@ -15,6 +14,7 @@ var day4 = document.querySelector("#day-4");
 var day5 = document.querySelector("#day-5");
 
 // set var for temps
+var currentTemp = document.querySelector("#current-temp");
 var day1Temp = document.querySelector("#day1-temp");
 var day2Temp = document.querySelector("#day2-temp");
 var day3Temp = document.querySelector("#day3-temp");
@@ -22,6 +22,7 @@ var day4Temp = document.querySelector("#day4-temp");
 var day5Temp = document.querySelector("#day5-temp");
 
 // set var for wind
+var currentWind = document.querySelector("#current-wind");
 var day1Wind = document.querySelector("#day1-wind");
 var day2Wind = document.querySelector("#day2-wind");
 var day3Wind = document.querySelector("#day3-wind");
@@ -29,6 +30,7 @@ var day4Wind = document.querySelector("#day4-wind");
 var day5Wind = document.querySelector("#day5-wind");
 
 // set var for humidity
+var currentHum = document.querySelector("#current-hum");
 var day1Hum = document.querySelector("#day1-hum");
 var day2Hum = document.querySelector("#day2-hum");
 var day3Hum = document.querySelector("#day3-hum");
@@ -209,7 +211,3 @@ $("#citysearchbtn").on("click", function (event) {
     }
 });
 
-function currentWeather() {
-    var currentTemp = data.main.temp + " F° ";
-    console.log("the current temp is " + currentTemp);
-}
