@@ -8,11 +8,28 @@ var currentWind = document.querySelector("#current-wind");
 var currentHum = document.querySelector("#current-hum");
 var weatherIcon = document.queryCommandValue("#weather-icon");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
+var day1 = document.querySelector("#day-1");
+var day2 = document.querySelector("#day-2");
+var day3 = document.querySelector("#day-3");
+var day4 = document.querySelector("#day-4");
+var day5 = document.querySelector("#day-5");
 
+// set var for time
 var currentDay = dayjs().format("MM/DD/YYYY");
+var firstDay = dayjs().add('1', 'day').format("MM/DD/YYYY");
+var secondDay = dayjs().add('2', 'day').format("MM/DD/YYYY");
+var thirdDay = dayjs().add('3', 'day').format("MM/DD/YYYY");
+var fourthDay = dayjs().add('4', 'day').format("MM/DD/YYYY");
+var fifthDay = dayjs().add('5', 'day').format("MM/DD/YYYY");
+
 // $("#1a").text(currentDay);
 
 console.log("today is " + currentDay);
+console.log("tomorrow is " + firstDay);
+console.log("the next day is " + secondDay);
+console.log("three days from now is " + thirdDay);
+console.log("four days from now is " + fourthDay);
+console.log("five days from now  is " + fifthDay);
 
 function getApi(cityEntered) {
   // fetch request gets a list of all the repos for the node.js organization
@@ -91,6 +108,25 @@ function getApi(cityEntered) {
           console.log(fiveDayUrl);
 
           console.log(data.list);
+
+          day1.textContent=firstDay;
+
+
+
+          day2.textContent=secondDay;
+
+
+
+          day3.textContent=thirdDay;
+
+
+
+          day4.textContent=fourthDay;
+
+
+          
+          day5.textContent=fifthDay;
+
 
 
         });
