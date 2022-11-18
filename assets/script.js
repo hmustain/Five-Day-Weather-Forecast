@@ -3,15 +3,18 @@ var cityInputEl = document.querySelector("#cityname");
 var searchCityContainerEl = document.querySelector("#searchcity");
 var citySearch = document.querySelector("#citysearch");
 var cityLocation = document.querySelector("#citylocation");
-var weatherIcon = document.queryCommandValue("#weather-icon");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
 
-// 5 day forcast header titles
+// 5 day forecast header titles
 var day1 = document.querySelector("#day-1");
 var day2 = document.querySelector("#day-2");
 var day3 = document.querySelector("#day-3");
 var day4 = document.querySelector("#day-4");
 var day5 = document.querySelector("#day-5");
+
+// weather icons
+var weatherIcon = document.queryCommandValue("#weather-icon");
+
 
 // set var for temps
 var currentTemp = document.querySelector("#current-temp");
