@@ -30,14 +30,29 @@ function getApi(cityEntered) {
                 })
                 .then(function (data) {
                     console.log(data);
-                    console.log(data.main.temp + " F");
+                    console.log("the temperature for " + cityEntered + " is " + data.main.temp + " F°");
+                    console.log("wind speeds for " + cityEntered + " is " + data.wind.speed + " mph, with gusts up to " + data.wind.gust + " mph ");
+                    console.log("Current humidity for " + cityEntered + " is " + data.main.humidity + " %");
+
 
                     console.log(weatherUrl);
-                    
+
                     console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
                 });
 
-            // currentWeather();
+            var fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+
+            fetch(fiveDayUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+
+                    console.log(fiveDayUrl);
+
+                });
+
         });
 }
 
