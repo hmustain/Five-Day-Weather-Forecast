@@ -4,37 +4,107 @@ var searchCityContainerEl = document.querySelector("#searchcity");
 var citySearch = document.querySelector("#citysearch");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
 
+function getApi(cityEntered) {
+    // fetch request gets a list of all the repos for the node.js organization
+    // below is combination from going back to ins_demo act 3 and ask bcs told me to use string template literals
+    var url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityEntered}&appid=${apiKey}`;
+    console.log(url);
 
-// working on event listener and local storage to store city's searched
-$("#citysearchbtn").on("click", function(event){
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data[0]);
+
+            console.log("my api key is " + apiKey);
+
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+
+            var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+
+            fetch(weatherUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+                    console.log("the temperature for " + cityEntered + " is " + data.main.temp + " F°");
+                    console.log("wind speeds for " + cityEntered + " is " + data.wind.speed + " mph, with gusts up to " + data.wind.gust + " mph ");
+                    console.log("Current humidity for " + cityEntered + " is " + data.main.humidity + " %");
+
+
+                    console.log(weatherUrl);
+
+                    console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
+                });
+
+            var fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+
+            fetch(fiveDayUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+
+                    console.log(fiveDayUrl);
+
+                });
+
+        });
+}
+
+$("#citysearchbtn").on("click", function (event) {
     event.preventDefault();
 
     var cityEntered = $("#cityname").val().trim();
 
     if (cityEntered) {
-        console.log("the city you entered is " + cityEntered)
-        
+        console.log("the city you entered is " + cityEntered);
+    } else {
+        alert("Please enter a valid City");
     }
-    else {alert("Please enter a valid City")};
 
     localStorage.setItem("city name", JSON.stringify(cityEntered));
     console.log("the city you entered is " + cityEntered);
     searchCity();
 
-    function searchCity(){
-    var prevCity = JSON.parse(localStorage.getItem("city name"));
-    var cityList = document.createElement("li");
-    cityList.setAttribute('class', 'prev-city-item');
-    cityList.textContent=prevCity;
+    function searchCity() {
+        var prevCity = JSON.parse(localStorage.getItem("city name"));
+        var cityList = document.createElement("li");
+        cityList.setAttribute("class", "prev-city-item");
+        cityList.textContent = prevCity;
 
-    citySearch.append(cityList);
+        citySearch.append(cityList);
 
-console.log("the previous city entered is " + prevCity);
-console.log("the current city entered is " + cityEntered);
-}});
+        console.log("the previous city entered is " + prevCity);
+        console.log("the current city entered is " + cityEntered);
 
+        getApi(cityEntered);
+    }
+});
 
-console.log("my api key is " + apiKey);
+function currentWeather(cityEntered) {
+    // put new fetch for lat long url here
+    // var lat = data[0].lat;
+    // var lon = data[0].lon;
 
+    // console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
 
+    fetch(weatherUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data[0]);
 
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+            var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+            console.log(weatherUrl);
+            console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
+        });
+}
