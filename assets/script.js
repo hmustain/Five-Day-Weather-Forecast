@@ -211,3 +211,9 @@ $("#citysearchbtn").on("click", function (event) {
     }
 });
 
+// add event listener to the prev city searched list and to rerun the function once a city is clicked
+$(document).on("click", ".prev-city-item", function() {
+    var cityList = $(this).text();
+    getApi(cityList);
+} )
+
