@@ -3,15 +3,24 @@ var cityInputEl = document.querySelector("#cityname");
 var searchCityContainerEl = document.querySelector("#searchcity");
 var citySearch = document.querySelector("#citysearch");
 var cityLocation = document.querySelector("#citylocation");
-var weatherIcon = document.queryCommandValue("#weather-icon");
 var apiKey = "1c0a9400ca0f8243bdd42c0e2c421139";
 
-// 5 day forcast header titles
+// 5 day forecast header titles
 var day1 = document.querySelector("#day-1");
 var day2 = document.querySelector("#day-2");
 var day3 = document.querySelector("#day-3");
 var day4 = document.querySelector("#day-4");
 var day5 = document.querySelector("#day-5");
+
+// weather icons
+var weatherIcon = document.querySelector("#weather-icon");
+var day1WeatherIcon = document.querySelector("#weather-icon1");
+var day2WeatherIcon = document.querySelector("#weather-icon2");
+var day3WeatherIcon = document.querySelector("#weather-icon3");
+var day4WeatherIcon = document.querySelector("#weather-icon4");
+var day5WeatherIcon = document.querySelector("#weather-icon5");
+
+
 
 // set var for temps
 var currentTemp = document.querySelector("#current-temp");
@@ -80,7 +89,6 @@ function getApi(cityEntered) {
                 })
                 .then(function (data) {
                     console.log(data);
-
                     currentTemp.textContent = " Temp: " + data.main.temp + " °F";
                     currentWind.textContent = " Wind Speed: " + data.wind.speed + " mph ";
                     currentHum.textContent = " Humidity: " + data.main.humidity + "% ";
@@ -115,11 +123,14 @@ function getApi(cityEntered) {
                     console.log(iconUrl);
 
                     console.log(weatherUrl);
+                    weatherIcon.setAttribute("src", iconUrl);
+
 
                     console.log("the lat, lon for " + cityEntered + " is " + [lat, lon]);
                 });
 
             var fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+
 
             fetch(fiveDayUrl)
                 .then(function (response) {
@@ -146,6 +157,42 @@ function getApi(cityEntered) {
                     console.log(data.list[21].main.humidity);
                     console.log(data.list[29].main.humidity);
                     console.log(data.list[37].main.humidity);
+
+                    // find icons for future forecast
+                    var day1IconCode = data.list[5].weather[0].icon;
+                    var day2IconCode = data.list[13].weather[0].icon;
+                    var day3IconCode = data.list[21].weather[0].icon;
+                    var day4IconCode = data.list[29].weather[0].icon;
+                    var day5IconCode = data.list[37].weather[0].icon;
+
+                    // console log results
+                    console.log(day1IconCode);
+                    console.log(day2IconCode);
+                    console.log(day3IconCode);
+                    console.log(day4IconCode);
+                    console.log(day5IconCode);
+
+                    // find icon url based on icon code
+                    var day1IconUrl = `https://openweathermap.org/img/w/${day1IconCode}.png`;
+                    var day2IconUrl = `https://openweathermap.org/img/w/${day2IconCode}.png`;
+                    var day3IconUrl = `https://openweathermap.org/img/w/${day3IconCode}.png`;
+                    var day4IconUrl = `https://openweathermap.org/img/w/${day4IconCode}.png`;
+                    var day5IconUrl = `https://openweathermap.org/img/w/${day5IconCode}.png`;
+
+                    // console log to make sure it works
+                    console.log(day1IconUrl);
+                    console.log(day2IconUrl);
+                    console.log(day3IconUrl);
+                    console.log(day4IconUrl);
+                    console.log(day5IconUrl);
+
+                    // set icons to future class
+                    day1WeatherIcon.setAttribute("src", day1IconUrl);
+                    day2WeatherIcon.setAttribute("src", day2IconUrl);
+                    day3WeatherIcon.setAttribute("src", day3IconUrl);
+                    day4WeatherIcon.setAttribute("src", day4IconUrl);
+                    day5WeatherIcon.setAttribute("src", day5IconUrl);
+
 
                     //   day 1 forecast
                     day1.textContent = firstDay;
@@ -212,6 +259,8 @@ $("#citysearchbtn").on("click", function (event) {
 });
 
 // add event listener to the prev city searched list and to rerun the function once a city is clicked
+// youtube video explaining $(this)
+// https://www.youtube.com/watch?v=TBVpCKNuPtw
 $(document).on("click", ".prev-city-item", function() {
     var cityList = $(this).text();
     getApi(cityList);
