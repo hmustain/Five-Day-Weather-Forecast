@@ -113,7 +113,8 @@
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
-  /* display: none; */
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 #current-temp, #current-wind, #current-hum {
@@ -163,9 +164,15 @@
 
 }
 
-#weather-icon {
-  justify-content: center;
-  size: 200%;
+.icons img {
+/* display: none; */
+/* align-items: center;
+align-self: center;
+align-content: center; */
+/* justify-content: center; */
+/* size-adjust: 50%; */
+/* size: 50%; */
+
 }
 
 /* .hide {
